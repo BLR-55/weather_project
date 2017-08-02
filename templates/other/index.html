@@ -1,0 +1,68 @@
+{% extends 'main/main.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Сайт актуальной погоды</title>
+{% endblock title %}
+
+{% block content %}
+
+<div id="headerwrap">
+    <div class="container">
+        <div class="row centered">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h1>Погода на планете</h1>
+                <h2>Интересно?</h2>
+                <h3 class="subtitle">Введите город что бы узнать текущую погоду:</h2>
+                    <div>
+                        {% if errors %}
+                        <ul>
+                            {% for error in errors %}
+                                <li style="color: red;">{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                        <form action="/weather_info/" method="post">{% csrf_token %}
+                            <input class="city-form" name='city' type="text" placeholder="Город:" value= {{form.city}}>
+                            <input type="submit"  class="btn btn-success" value="Отправить">
+                        </form>
+                    </div>
+            </div>
+            <div class="col-lg-2 col-lg-offset8">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                      </ol>  
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="static/bootstrap/img/slide1.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="static/bootstrap/img/slide2.png" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="static/bootstrap/img/slide3.png" alt="">
+                        </div>
+                    </div>
+                </div>      
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+

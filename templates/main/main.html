@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <mata name="viewport" content="width-device-width, initial-scale=1.0">
+
+    {% block title %}
+    <title>Title</title>
+    {% endblock title%}
+
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type='text/css' media='all'>
+
+    <!-- MyStyle styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+</head>
+<body>
+    {% include 'other/navbar.html' %}
+
+    <div class="wrapper">
+        <div class="wrapper-content">
+
+
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+    </div>
+
+{% include 'other/footer.html' %}
+
+
+
+</body>
+</html>
