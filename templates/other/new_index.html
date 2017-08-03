@@ -24,8 +24,8 @@
                         </ul>
                         {% endif %}
 
-                        <form action="/weather_info/" method="post">{% csrf_token %}
-                            <input class="city-form" name='city' type="text" required placeholder="Город:" value= {{form.city}}>
+                        <form action="/info/" method="get">
+                            <input class="city-form" name='city' type="text" placeholder="Город:">
                             <input type="submit"  class="btn btn-success" value="Отправить">
                         </form>
                     </div>
@@ -55,14 +55,3 @@
 </div>
 
 {% endblock content %}
-
-
-
-
-
-
-
-
-
-
-
