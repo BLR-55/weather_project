@@ -32,11 +32,11 @@
 
 
                         <script>  
-                            function show()  
+                            function show(url,block)  
                             {   
                                 $.ajax({
                                     type: 'POST',
-                                    url: "/weather_info/",  
+                                    url: url,  
                                     cache: false, 
                                     data: {
                                     'city': '{{ city }}',
@@ -44,14 +44,14 @@
                                             },
 
                                     success: function(html){  
-                                        $("#content_2").html(html);  
+                                        block.html(html);  
                                     }  
                                 });  
                             }  
       
                             $(document).ready(function(){  
-                                show();  
-                                setInterval('show()',60000);  
+                               
+                                setInterval(show('/weather_info/',$('#content_2')), 60000);  
                             });  
                         </script> 
 

@@ -11,7 +11,7 @@ from pyowm import OWM
 
 # def weath2(request):
 
-#     API_key = '63ac529deef3fb307c5c5f5d47d4a9de'
+#     API_key = 'code_here'
 #     owm = OWM(API_key)
 
 #     obs = owm.weather_at_place('Moscow')
@@ -28,7 +28,7 @@ from pyowm import OWM
 
 def weath_info(request):
 
-    API_key = '63ac529deef3fb307c5c5f5d47d4a9de'
+    API_key = 'code here'
     owm = OWM(API_key)
 
     errors = []
@@ -84,7 +84,7 @@ def index(request):
 
 # def info(request):
 
-#     API_key = '63ac529deef3fb307c5c5f5d47d4a9de'
+#     API_key = 'code here'
 #     owm = OWM(API_key)
 #     errors = []
 #     form = {}
@@ -114,7 +114,7 @@ def index(request):
 
 # def weath_info(request):
 
-#     API_key = '63ac529deef3fb307c5c5f5d47d4a9de'
+#     API_key = 'code here'
 #     owm = OWM(API_key)
 
 #     errors = []
