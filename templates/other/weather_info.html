@@ -11,52 +11,22 @@
     <div class="container">
         <div class="row centered">
             <div class="col-lg-8 col-lg-offset-2">
-                <h1>Погода на планете</h1>
-                <h2>Интересно?</h2>
+                
                 <div class="hold">
                 {% if message  %}
                     <h3>{{ message }}</h3>
                 {% endif%}
-                {% if city  %}
                 
-                    <h3>Город: <u>{{ city }}</u></h3>
-                    <h4>Температура: {{ temp }} &#176;C;</h4>
+
+                    <h3>Город: <u>{{ form.city }}</u></h3>
+                    <h4>Температура: {{ form.temp }} &#176;C;</h4>
                     <h4>Скорость ветра: {{ wind_s }} м/с;</h4>
                     <h4>Влажность: {{ humidity }} %;</h4>
                     <h4>Давление: {{ press }} мм. рт. ст.</h4>
                 
 
-                {% endif %}
-                </div> 
-                <div id="content_2"></div>
-
-
-                        <script>  
-                            function show(url,block)  
-                            {   
-                                $.ajax({
-                                    type: 'POST',
-                                    url: url,  
-                                    cache: false, 
-                                    data: {
-                                    'city': '{{ city }}',
-                                    'csrfmiddlewaretoken': '{{ csrf_token }}',
-                                            },
-
-                                    success: function(html){  
-                                        block.html(html);  
-                                    }  
-                                });  
-                            }  
-      
-                            $(document).ready(function(){  
-                               
-                                setInterval(show('/weather_info/',$('#content_2')), 60000);  
-                            });  
-                        </script> 
-
-
-       
+                
+                </div>
             <div class="col-lg-2 col-lg-offset8">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                       <ol class="carousel-indicators">

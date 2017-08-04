@@ -24,12 +24,53 @@
                         </ul>
                         {% endif %}
 
-                        <form action="/weather_info/" method="post">{% csrf_token %}
-                            <input class="city-form" name='city' type="text" required placeholder="Город:" value= {{form.city}}>
-                            <input type="submit"  class="btn btn-success" value="Отправить">
-                        </form>
+                       
+                            <input class="city-form" id = 'My_str'name='city' type="text" required placeholder="Город:" value= {{form.city}}>
+                            <input type="submit"  id = 'butt'class="btn btn-success" value="Отправить">
+                        
                     </div>
             </div>
+            <style type="text/css">
+                #content_2{
+                    color: #FF0000;
+                }
+            </style>
+            <div id = "content_2"><h1>Lala</h1></div>
+             <script> 
+                        var CITY
+                            $(document).ready(function(){
+                                $('#butt').click(function(){
+                                   
+                                  CITY  = document.getElementById("My_str").value;
+                                  
+                                    setInterval(show('/weather_info/',$('#content_2')), 5000);
+                                    });
+                                });
+                            
+                            function show(url,block)  
+                            {   
+
+                                
+                                $.ajax({
+                                    type: 'POST',
+                                    url: url,  
+                                    cache: false, 
+                                    data: {
+                                    'city': CITY,
+                                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                                            },
+
+                                    success: function(html){  
+                                        block.html(html);  
+                                    }  
+                                });  
+                            }  
+      
+
+                        </script> 
+
+
+
             <div class="col-lg-2 col-lg-offset8">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                       <ol class="carousel-indicators">
