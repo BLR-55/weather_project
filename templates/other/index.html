@@ -16,61 +16,59 @@
                 <h2>Интересно?</h2>
                 <h3 class="subtitle">Введите город что бы узнать текущую погоду:</h2>
                     <div>
-                        {% if errors %}
-                        <ul>
-                            {% for error in errors %}
-                                <li style="color: red;">{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
 
-                       
-                            <input class="city-form" id = 'My_str'name='city' type="text" required placeholder="Город:" value= {{form.city}}>
+                            <input class="city-form" id = 'My_str'name='city' type="text" required placeholder="Город:">
                             <input type="submit"  id = 'butt'class="btn btn-success" value="Отправить">
-                        
+                            
                     </div>
             </div>
-            <style type="text/css">
-                #content_2{
-                    color: #FF0000;
-                }
-            </style>
-            <div id = "content_2"><h1>Lala</h1></div>
-             <script> 
-                        var CITY
-                            $(document).ready(function(){
-                                $('#butt').click(function(){
-                                   
-                                  CITY  = document.getElementById("My_str").value;
-                                  
-                                    setInterval(show('/weather_info/',$('#content_2')), 5000);
-                                    });
-                                });
-                            
-                            function show(url,block)  
-                            {   
 
-                                
-                                $.ajax({
+            <div id = "output" class = "hold"></div>
+            <script> 
+                            var CITY;
+                            var IntervalId = 0;
+                            var i =  0;
+
+                            $('#butt').click(function()
+                            {   
+                                CITY  = document.getElementById("My_str").value;
+                                i = 0;
+                                clearInterval(IntervalId);
+                                show();
+                                var timeInterval = 60000;
+                                IntervalId = setInterval(show,timeInterval);
+                            });
+                               
+                            function show()  
+                            {      
+                                $.ajax
+                                ({
                                     type: 'POST',
-                                    url: url,  
+                                    url: '/weather_info/',  
                                     cache: false, 
                                     data: {
-                                    'city': CITY,
-                                    'csrfmiddlewaretoken': '{{ csrf_token }}',
-                                            },
-
-                                    success: function(html){  
-                                        block.html(html);  
-                                    }  
+                                            'city': CITY,
+                                            'csrfmiddlewaretoken': '{{ csrf_token }}',
+                                          },
+                                    success: function(responseData)
+                                    {
+                                        if(responseData.city == undefined)
+                                        {
+                                            clearInterval(IntervalId);
+                                            $('#output').html("<h2>Такого города нет</h2>");
+                                        }
+                                        else
+                                        {
+                                            $('#output').html(
+                                                '<h3> Город: <u>'+ responseData.city+'</u></h3> <h4> Температура: '+ responseData.temperature + '&#176;C;</h4><h4> Скорость ветра: '+ responseData.wind_speed+'м/с;</h4><h4> Влажность: '+ responseData.humidity +'%;</h4><h4> Давление: '+responseData.press + 'мм. рт. ст.</h4>' + i);
+                                            i += 1;
+                                        } 
+                                    }                                   
                                 });  
+                                return false;
                             }  
-      
-
-                        </script> 
-
-
-
+            </script> 
+                        
             <div class="col-lg-2 col-lg-offset8">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                       <ol class="carousel-indicators">

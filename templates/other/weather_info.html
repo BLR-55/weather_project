@@ -12,15 +12,15 @@
         <div class="row centered">
             <div class="col-lg-8 col-lg-offset-2">
                 
-                <div class="hold">
+                <div class="hold" id='Main_Output'>
                 {% if message  %}
                     <h3>{{ message }}</h3>
                 {% endif%}
                 
 
                     <h3>Город: <u>{{ form.city }}</u></h3>
-                    <h4>Температура: {{ form.temp }} &#176;C;</h4>
-                    <h4>Скорость ветра: {{ wind_s }} м/с;</h4>
+                    <h4 id="tt">Температура: {{ form.temp }} &#176;C;</h4>
+                    <h4 id="ww">Скорость ветра: {{ wind_s }} м/с;</h4>
                     <h4>Влажность: {{ humidity }} %;</h4>
                     <h4>Давление: {{ press }} мм. рт. ст.</h4>
                 
