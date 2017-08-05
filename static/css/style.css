@@ -141,3 +141,41 @@ hr {
 }
 
 
+#sprite {
+    float: left;
+    margin-left: 20px;
+    width: 180px;
+}
+
+
+.sprite {
+    background-image: url(../../static/bootstrap/img/spritesheet.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.sprite-github {
+    width: 30px;
+    height: 30px;
+    background-position: -5px -5px;
+}
+
+.sprite-itechart_mini {
+    width: 40px;
+    height: 40px;
+    background-position: -45px -5px;
+}
+
+.sprite-linkedin {
+    width: 30px;
+    height: 30px;
+    background-position: -95px -5px;
+}
+
+.sprite-python {
+    width: 30px;
+    height: 30px;
+    background-position: -135px -5px;
+}
+
+
