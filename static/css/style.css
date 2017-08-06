@@ -54,9 +54,6 @@ hr {
     border-color: #2d2d2d;
 }
 
-/*.navbar-inverse .navbar-nav > .active > a {
-    background-color: #ff7878;
-}*/
 
 .navbar-inverse .navbar-brand {
     color: #999;
@@ -231,4 +228,6 @@ hr {
 #output {
     display: none;
 }
+
+
 

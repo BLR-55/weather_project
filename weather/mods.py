@@ -1,5 +1,6 @@
 
-def degree(deg_val):
+def degree(deg_val): # Mapping direction name and 
+                     #translate weather statuses into ru-language
 
     val = float(deg_val)
 
@@ -38,11 +39,9 @@ def degree(deg_val):
 
     return deg_name
 
-def weather_status(status):
+def weather_status(status): # Translate weather statuses into ru-language
 
     val = str(status).lower()
-    print(status)
-    print(val)
 
     if val == 'rain':
         val_name = 'Дождь'
@@ -70,10 +69,27 @@ def weather_status(status):
         val_name = val
     return val_name
 
-def convert_press(val):
+def convert_press(val): # Transfer of pressure from hPa to Mm Hg
+
     val = int(val)
     val = int(val * 0.75006375541921)
     return val
+
+def city_check(city): # Check input values
+    
+    white_list = [' ', '-']
+    city_2 = [var for var in city]
+    res = False
+    if city_2[0].isalpha():
+        res = True
+        for i in city_2:
+            if not i.isalpha() and not i in white_list:
+                res = False
+                break
+
+    return res
+
+
 
 
 

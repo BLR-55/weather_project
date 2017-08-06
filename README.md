@@ -20,6 +20,13 @@ $ pyowm==2.7.1
 ```
 Pyowm module [download.](https://github.com/csparpa/pyowm)
 
+### Used API
+
+ - Openweather map ([link](https://openweathermap.org/api/) page for details)
+
+`Warning! The "Openweather map" API corrects errors in the names of cities`
+
+
 ### Used technologies
   - Python 3
   - Django

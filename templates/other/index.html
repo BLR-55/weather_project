@@ -29,6 +29,7 @@
             
 <script> 
     var CITY;
+    var CITY_ID;
     var IntervalId = 0;
     var i =  1;
 
@@ -45,12 +46,43 @@
             i = 1;
             clearInterval(IntervalId);
             $('#output').show();
-            show();
-            var timeInterval = 60000;
-            IntervalId = setInterval(show,timeInterval);
+            Take_Id();
         }
     });
-                               
+    function Take_Id()
+    {
+         $.ajax
+        ({
+            type: 'POST',
+            url: '/take_id/',  
+            cache: false, 
+            data: 
+            {
+                'city': CITY,
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+
+            },
+            success: function(res_id)
+            {
+                if(res_id.city == undefined)
+                {
+                    clearInterval(IntervalId);
+                    $('#output').html("<h3>Города </h3>"+CITY+ "<h3>нет</h3>");
+                }
+                else
+                {
+                    CITY_ID = res_id.Id;
+                    i = 1;
+                    clearInterval(IntervalId);
+                    $('#output').show();
+                    show();
+                    var timeInterval = 60000;
+                    IntervalId = setInterval(show,timeInterval);
+                }
+            }
+        });
+        return false;
+    }                      
     function show()  
     {      
         $.ajax
@@ -60,31 +92,17 @@
             cache: false, 
             data: 
             {
-                'city': CITY,
+                'id': CITY_ID,
                 'csrfmiddlewaretoken': '{{ csrf_token }}',
             },
             success: function(responseData)
             {
-                if(responseData.city == undefined)
-                {
+                
                     
-                    
-                        clearInterval(IntervalId);
-                        $('#output').html("<h2>Такого города нет</h2>");
-                    
-                    
-                }
-                else
-                {
-                    if(responseData.stat == undefined || responseData.temperature == undefined ||responseData.wind_speed == undefined || responseData.wind_der == undefined || responseData.humidity == undefined || responseData.press==undefined )
-                    {
-                        alert("Информация о городе " + responseData.city + " неполная");
-                    }
                     $('#output').html(
                     '<h3> Город: <u>'+ responseData.city + '</u></h3><h4>' + responseData.stat + '</h4><h4> Температура: '+ responseData.temperature + '&#176;C;</h4><h4> Скорость ветра: '+ responseData.wind_speed +'м/с;</h4><h4>Направление ветра: </h4><h4>'+responseData.wind_der+'</h4><h4> Влажность: '+ responseData.humidity +'%;</h4><h4> Давление: '+responseData.press + 'мм. рт. ст.</h4><h4>Количество обновлений:</h4>' + i);
                     i += 1;
-                } 
-            }                                   
+            }                                  
         });  
         return false;
     }  
