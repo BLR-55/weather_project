@@ -1,5 +1,5 @@
 body {
-    background-color:  #f2f2f2;
+    background-color:  #A9A9A9;
     font-weight: 300;
     font-size: 16px;
     color: #555;
@@ -46,6 +46,7 @@ hr {
     font-size:  14px;
     padding-top: 15px;
     padding-bottom: 15px;
+    height: 70px;
 }
 
 .navbar-inverse {
@@ -68,6 +69,39 @@ hr {
     color: #FF0000;
 }
 
+.about {
+    width: 300px;
+    margin-left: 30%;
+}
+
+.about h3, p {
+    color: #FFFFFF;
+}
+
+
+.about ul {
+    color: #D3D3D3;
+}
+
+.about li {
+    color: #C0C0C0;
+    text-align: left;
+}
+
+
+#headerwrap_about {
+    background-color: #000000;
+    height: 1000px;
+    margin-top: -10px;
+    padding-top: 20px;
+    text-align: center;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 500px;
+    width: 100%;
+    background-size: 100%;
+    background-size: cover;
+}
 
 #headerwrap {
     background: url(../bootstrap/img/4_seasons.jpg) no-repeat;
@@ -97,6 +131,14 @@ hr {
     font-weight: 400;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+#slider {
+    width: 200px;
+}
+
+.carousel-inner {
+    height: 210px;
 }
 
 .w {
@@ -130,6 +172,7 @@ hr {
     width: 300px;
     text-align: center;
     margin: 0 auto;
+    margin-top: 230px;
     padding: 5px;
     border: 2px solid #2d2d2d;
 }
@@ -139,7 +182,13 @@ hr {
     color: #FF0000;
     background-color: #0000ff
 }
+.container2 {
+    margin-top: 180px;
+}
 
+#footer {
+    background-color: #A9A9A9;
+}
 
 #sprite {
     float: left;
@@ -178,4 +227,8 @@ hr {
     background-position: -135px -5px;
 }
 
+
+#output {
+    display: none;
+}
 

@@ -47,8 +47,8 @@ def weath_info(request):
         return redirect('index_view')
 
 
-def new_form(request):
-    return render(request, 'other/new_form.html')
+def about(request):
+    return render(request, 'other/about.html')
 
 def index(request):
     return render(request, 'other/index.html')

@@ -9,21 +9,24 @@
 {% block content %}
 
 <div id="headerwrap">
-    <div class="container">
+    <div class="container2">
         <div class="row centered">
             <div class="col-lg-8 col-lg-offset-2">
-                <h1>Погода на планете</h1>
-                <h2>Интересно?</h2>
-                <h3 class="subtitle">Введите город что бы узнать текущую погоду:</h2>
-                    <div>
+                <div class="content_main">
+                    <h2>Погода на планете</h2>
+                    <h2>Интересно?</h2>
+                    <h3 class="subtitle">Введите город что бы узнать текущую погоду:</h3>
+                        <div>
 
-                            <input class="city-form" id = 'My_str'name='city' type="text" required placeholder="Город:">
-                            <input type="submit"  id = 'butt'class="btn btn-success" value="Отправить">
-                            
-                    </div>
+                                <input class="city-form" id ='My_str' name='city' type="text" required placeholder="Город:">
+                                <input type="submit"  id ='butt' class="btn btn-success" value="Отправить">
+                                
+                        </div>
+                </div>
             </div>
-
-            <div id = "output" class = "hold"></div>
+            
+           
+            
             <script> 
                             var CITY;
                             var IntervalId = 0;
@@ -31,6 +34,7 @@
 
                             $('#butt').click(function()
                             {   
+                                $('#output').show();
                                 CITY  = document.getElementById("My_str").value;
                                 i = 0;
                                 clearInterval(IntervalId);
@@ -70,13 +74,8 @@
                             }  
             </script> 
                         
-            <div class="col-lg-2 col-lg-offset8">
+            <div class="col-lg-2 col-lg-offset10" id="slider">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                      </ol>  
                     <div class="carousel-inner">
                         <div class="item active">
                             <img src="static/bootstrap/img/sun.png" alt="">
@@ -87,9 +86,17 @@
                         <div class="item">
                             <img src="static/bootstrap/img/cloud.png" alt="">
                         </div>
+                        <div>
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>  
+                        </div>
                     </div>
                 </div>      
             </div>
+            <div id = "output" class = "hold"></div>
         </div>
     </div>
 </div>
