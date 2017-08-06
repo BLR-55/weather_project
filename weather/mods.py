@@ -88,8 +88,3 @@ def city_check(city): # Check input values
                 break
 
     return res
-
-
-
-
-

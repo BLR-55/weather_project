@@ -23,9 +23,7 @@
                                 
                         </div>
                 </div>
-            </div>
-            
-           
+            </div>         
             
 <script> 
     var CITY;
@@ -33,9 +31,35 @@
     var IntervalId = 0;
     var i =  1;
 
+    document.onkeyup = function (e) 
+    {    
+        
+        e = e || window.event;
+        if (e.keyCode === 13)
+        {
+            $( "#butt" ).fadeTo("slow",0.25);
+            $( "#butt" ).fadeTo("slow",1.00);
+            CITY  = document.getElementById("My_str").value;
+            if(CITY.length == 0)
+            {
+                alert("Заполните поле: Город");
+            }
+            else
+            {
+                i = 1;
+                clearInterval(IntervalId);
+                $('#output').show();
+                Take_Id();
+            }
+        }
+        return false;
+    }    
+
+
     $('#butt').click(function()
     {   
-                               
+        $( "#butt" ).fadeTo("slow",0.25);
+        $( "#butt" ).fadeTo("slow",1.00);        
         CITY  = document.getElementById("My_str").value;
         if(CITY.length == 0)
         {
