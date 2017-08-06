@@ -27,52 +27,68 @@
             
            
             
-            <script> 
-                            var CITY;
-                            var IntervalId = 0;
-                            var i =  1;
+<script> 
+    var CITY;
+    var IntervalId = 0;
+    var i =  1;
 
-                            $('#butt').click(function()
-                            {   
-                                $('#output').show();
-                                CITY  = document.getElementById("My_str").value;
-                                i = 0;
-                                clearInterval(IntervalId);
-                                show();
-                                var timeInterval = 60000;
-                                IntervalId = setInterval(show,timeInterval);
-                            });
+    $('#butt').click(function()
+    {   
                                
-                            function show()  
-                            {      
-                                $.ajax
-                                ({
-                                    type: 'POST',
-                                    url: '/weather_info/',  
-                                    cache: false, 
-                                    data: {
-                                            'city': CITY,
-
-                                            'csrfmiddlewaretoken': '{{ csrf_token }}',
-                                          },
-                                    success: function(responseData)
-                                    {
-                                        if(responseData.city == undefined)
-                                        {
-                                            clearInterval(IntervalId);
-                                            $('#output').html("<h2>Такого города нет</h2>");
-                                        }
-                                        else
-                                        {
-                                            $('#output').html(
-                                                '<h3> Город: <u>'+ responseData.city + '</u></h3><h4>' + responseData.stat + '</h4><h4> Температура: '+ responseData.temperature + '&#176;C;</h4><h4> Скорость ветра: '+ responseData.wind_speed +'м/с;</h4><h4>Направление ветра: </h4><h4>'+responseData.wind_der+'</h4><h4> Влажность: '+ responseData.humidity +'%;</h4><h4> Давление: '+responseData.press + 'мм. рт. ст.</h4><h4>Количество обновлений:</h4>' + i);
-                                            i += 1;
-                                        } 
-                                    }                                   
-                                });  
-                                return false;
-                            }  
-            </script> 
+        CITY  = document.getElementById("My_str").value;
+        if(CITY.length == 0)
+        {
+            alert("Заполните поле: Город");
+        }
+        else
+        {
+            i = 1;
+            clearInterval(IntervalId);
+            $('#output').show();
+            show();
+            var timeInterval = 60000;
+            IntervalId = setInterval(show,timeInterval);
+        }
+    });
+                               
+    function show()  
+    {      
+        $.ajax
+        ({
+            type: 'POST',
+            url: '/weather_info/',  
+            cache: false, 
+            data: 
+            {
+                'city': CITY,
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+            },
+            success: function(responseData)
+            {
+                if(responseData.city == undefined)
+                {
+                    
+                    
+                        clearInterval(IntervalId);
+                        $('#output').html("<h2>Такого города нет</h2>");
+                    
+                    
+                }
+                else
+                {
+                    if(responseData.stat == undefined || responseData.temperature == undefined ||responseData.wind_speed == undefined || responseData.wind_der == undefined || responseData.humidity == undefined || responseData.press==undefined )
+                    {
+                        alert("Информация о городе " + responseData.city + " неполная");
+                    }
+                    $('#output').html(
+                    '<h3> Город: <u>'+ responseData.city + '</u></h3><h4>' + responseData.stat + '</h4><h4> Температура: '+ responseData.temperature + '&#176;C;</h4><h4> Скорость ветра: '+ responseData.wind_speed +'м/с;</h4><h4>Направление ветра: </h4><h4>'+responseData.wind_der+'</h4><h4> Влажность: '+ responseData.humidity +'%;</h4><h4> Давление: '+responseData.press + 'мм. рт. ст.</h4><h4>Количество обновлений:</h4>' + i);
+                    i += 1;
+                } 
+            }                                   
+        });  
+        return false;
+    }  
+</script> 
                         
             <div class="col-lg-2 col-lg-offset10" id="slider">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
