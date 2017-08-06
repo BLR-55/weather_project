@@ -70,7 +70,10 @@ def weather_status(status):
         val_name = val
     return val_name
 
-
+def convert_press(val):
+    val = int(val)
+    val = int(val * 0.75006375541921)
+    return val
 
 
 

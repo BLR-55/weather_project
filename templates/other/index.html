@@ -30,7 +30,7 @@
             <script> 
                             var CITY;
                             var IntervalId = 0;
-                            var i =  0;
+                            var i =  1;
 
                             $('#butt').click(function()
                             {   
@@ -65,7 +65,7 @@
                                         else
                                         {
                                             $('#output').html(
-                                                '<h3> Город: <u>'+ responseData.city + '</u></h3><h4>' + responseData.stat + '</h4><h4> Температура: '+ responseData.temperature + '&#176;C;</h4><h4> Скорость ветра: '+ responseData.wind_speed +'м/с;</h4><h4>Направление ветра: </h4><h4>'+responseData.wind_der+'</h4><h4> Влажность: '+ responseData.humidity +'%;</h4><h4> Давление: '+responseData.press + 'мм. рт. ст.</h4>' + i);
+                                                '<h3> Город: <u>'+ responseData.city + '</u></h3><h4>' + responseData.stat + '</h4><h4> Температура: '+ responseData.temperature + '&#176;C;</h4><h4> Скорость ветра: '+ responseData.wind_speed +'м/с;</h4><h4>Направление ветра: </h4><h4>'+responseData.wind_der+'</h4><h4> Влажность: '+ responseData.humidity +'%;</h4><h4> Давление: '+responseData.press + 'мм. рт. ст.</h4><h4>Количество обновлений:</h4>' + i);
                                             i += 1;
                                         } 
                                     }                                   

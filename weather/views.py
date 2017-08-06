@@ -3,7 +3,7 @@ from django.shortcuts import render, render_to_response, redirect
 from django.template import Template, Context
 from django.http import HttpResponse, JsonResponse
 import json
-from .mods import degree, weather_status
+from .mods import degree, weather_status, convert_press
 from pyowm import OWM
 
 
@@ -30,7 +30,7 @@ def weath_info(request):
                 form['wind_speed'] = w.get_wind()['speed']
                 form['wind_der'] = degree(w.get_wind()['deg'])
                 form['humidity'] = w.get_humidity()
-                form['press'] = w.get_pressure()['press'] 
+                form['press'] = convert_press(w.get_pressure()['press']) 
 
 
 
