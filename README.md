@@ -36,4 +36,4 @@ Pyowm module [download.](https://github.com/csparpa/pyowm)
   - Bootstrap
   
 ### Examples
-![Example of the request received ](https://github.com/BLR-55/weather/blob/viktor_dev/examples/example_1.png)
+![Example of the request received ](https://github.com/BLR-55/weather_project/blob/viktor_dev/examples/example_1.png)
