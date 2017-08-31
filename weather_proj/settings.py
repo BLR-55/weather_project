@@ -123,6 +123,6 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = ''
+STATIC_ROOT = '/home/belborsh/weather_project/'
 
 
